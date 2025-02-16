@@ -1,0 +1,66 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Círculo externo */
+.outer-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  cursor:pointer;
+}
+
+.blue {
+  background-color: #0070f8 !important;
+}
+
+.red {
+  background-color: #e82010 !important;
+}
+
+.yellow {
+background-color: #E96D23 !important;
+}
+
+/* Círculo medio */
+.middle-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Círculo interno */
+.inner-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Iconos SVG */
+.svg-icon {
+  width: 100%;
+  height: 100%;
+  fill: currentColor; /* Hereda el color del contexto */
+}
+.svg-icon.white {
+  filter: brightness(0) invert(1); /* Alternativa para SVGs que no permiten CSS `fill` */
+}
+
+.transparent{
+  opacity: 0.8; /* Aplica la transparencia */
+}
