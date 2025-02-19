@@ -1,7 +1,7 @@
 import "./style.css";
 
 document.querySelector("#app").innerHTML = `
-    <div style="min-width: 450px; max-width:450px; border-radius: 25px; background:#FFD700; padding: 1em;">
+<div style="min-width: 450px; max-width:450px; border-radius: 25px; background:#FFD700; padding: 1em;">
    <div style="text-align:center; font-size:2em; padding:.5em;">'''Pikachu'''</div>
    <div style="display: flex; align-items: center;">
       <div style="flex: 25%; text-align: left; white-space: nowrap;">ピカチュウ (Pikachu)</div>
@@ -37,24 +37,22 @@ document.querySelector("#app").innerHTML = `
             </div>
         </div>
      </div>
-     <br>
-      <div id="seccion1" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif;">
-         <div id="seccion1menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+      <div id="seccion1" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif;  margin-top:.75em">
+         <div id="btnSec1Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
             <span>&#8592;</span>
          </div>
-         <div id="seccion1texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Normal</div>
-         <div id="seccion1mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc;display: flex; align-items: center; justify-content: center; cursor: pointer;">
+         <div id="seccion1Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
+         <div id="btnSec1Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc;display: flex; align-items: center; justify-content: center; cursor: pointer;">
             <span>&#8594;</span>
          </div>
       </div>
      
-     <br>
-     <div id="seccion2" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif;">
-         <div id="seccion2menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+     <div id="seccion2" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif; margin-top:.75em">
+         <div id="btnSec2Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
             <span>&#8592;</span>
          </div>
-         <div id="seccion2texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Texto de prueba</div>
-         <div id="seccion2mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc;display: flex; align-items: center; justify-content: center; cursor: pointer;">
+         <div id="seccion2Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
+         <div id="btnSec2Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc;display: flex; align-items: center; justify-content: center; cursor: pointer;">
             <span>&#8594;</span>
          </div>
       </div>
@@ -68,26 +66,81 @@ let selector1 = 0;
 let selector2 = 0;
 let secciones = [
     {
-      tipo: "Común"
+        tipo: "Común"
     },
     {
-      tipo: "Con gorro",
-      opciones: ["Gorra blanca", "Gorra negra"]
+        tipo: "Con gorro",
+        opciones: ["pikachu_gorras", "Gorra negra"]
     }
-  ];
+];
 
 let imagenPokemonCuadro = document.querySelector("#imagenPokemonCuadro");
 let btnMacho = document.querySelector("#btnMacho");
 let btnHembra = document.querySelector("#btnHembra");
 let btnShiny = document.querySelector("#btnShiny");
 let seccion1 = document.querySelector("#seccion1")
-let btnSec1Mas = document.querySelector("#seccion1mas");
-let btnSec1Texto = document.querySelector("#seccion1texto");
-let btnSec1Menos = document.querySelector("#seccion1menos");
+let btnSec1Mas = document.querySelector("#btnSec1Mas");
+let seccion1Texto = document.querySelector("#seccion1Texto");
+let btnSec1Menos = document.querySelector("#btnSec1Menos");
 let seccion2 = document.querySelector("#seccion2")
-let btnSec2Mas = document.querySelector("#seccion2mas");
-let btnSec2Texto = document.querySelector("#seccion2texto");
-let btnSec2Menos = document.querySelector("#seccion2menos");
+let btnSec2Menos = document.querySelector("#btnSec2Menos");
+let seccion2Texto = document.querySelector("#seccion2Texto");
+let btnSec2Mas = document.querySelector("#btnSec2Mas");
+
+const infoPokemon = {
+    "normal": {
+        "normal": {
+            "tipo": [
+                "Eléctrico"
+            ],
+            "altura": 0.4,
+            "peso": 6,
+            "habilidad": [
+                {
+                    "nombre": "Electricidad Estática"
+                },
+                {
+                    "nombre": "Pararrayos",
+                    "oculta": true
+                }
+            ]
+        },
+        "Con gorra": {
+            "pikachu_gorras": {
+                "tipo": [
+                    "Eléctrico con gorras"
+                ],
+                "genero": "m",
+                "altura": 0.4,
+                "peso": 6,
+                "habilidad": [
+                    {
+                        "nombre": "Electricidad Estática"
+                    },
+                    {
+                        "nombre": "Pararrayos",
+                        "oculta": true
+                    }
+                ]
+            }
+        }
+    },
+    "giga": {
+        "tipo": [
+            "Eléctrico"
+        ],
+        "altura": 21,
+        "habilidad": [
+            {
+                "nombre": "Electricidad Estática"
+            },
+            {
+                "nombre": "Pararrayos",
+                "oculta": true
+            }
+        ]
+    }
+}
 
 let pokemon = "Pikachu"
 let isMacho = false;
@@ -101,125 +154,149 @@ let imagenFinal = "";
 constructorImagenFinal();
 
 btnMacho.addEventListener("click", () => {
-  isMacho = isMacho ? false : true;
-  isHembra = isHembra ? false : true;
-  btnMacho.classList.toggle("blue")
-  btnMacho.querySelector(".middle-circle").classList.toggle("blue")
-  btnMacho.querySelector(".middle-circle").classList.toggle("transparent");
-  btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("blue")
-  btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
+    isMacho = isMacho ? false : true;
+    isHembra = isHembra ? false : true;
+    btnMacho.classList.toggle("blue")
+    btnMacho.querySelector(".middle-circle").classList.toggle("blue")
+    btnMacho.querySelector(".middle-circle").classList.toggle("transparent");
+    btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("blue")
+    btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
 
-  btnHembra.classList.toggle("red")
-  btnHembra.querySelector(".middle-circle").classList.toggle("red")
-  btnHembra.querySelector(".middle-circle").classList.toggle("transparent");
-  btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("red")
-  btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
+    btnHembra.classList.toggle("red")
+    btnHembra.querySelector(".middle-circle").classList.toggle("red")
+    btnHembra.querySelector(".middle-circle").classList.toggle("transparent");
+    btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("red")
+    btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
 
-  constructorImagenFinal();
+    constructorImagenFinal();
 });
 
 btnHembra.addEventListener("click", () => {
-  isMacho = isMacho ? false : true;
-  isHembra = isHembra ? false : true;
-  btnHembra.classList.toggle("red")
-  btnHembra.querySelector(".middle-circle").classList.toggle("red")
-  btnHembra.querySelector(".middle-circle").classList.toggle("transparent");
-  btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("red")
-  btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
+    isMacho = isMacho ? false : true;
+    isHembra = isHembra ? false : true;
+    btnHembra.classList.toggle("red")
+    btnHembra.querySelector(".middle-circle").classList.toggle("red")
+    btnHembra.querySelector(".middle-circle").classList.toggle("transparent");
+    btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("red")
+    btnHembra.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
 
-  btnMacho.classList.toggle("blue")
-  btnMacho.querySelector(".middle-circle").classList.toggle("blue")
-  btnMacho.querySelector(".middle-circle").classList.toggle("transparent");
-  btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("blue")
-  btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
+    btnMacho.classList.toggle("blue")
+    btnMacho.querySelector(".middle-circle").classList.toggle("blue")
+    btnMacho.querySelector(".middle-circle").classList.toggle("transparent");
+    btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("blue")
+    btnMacho.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
 
-  constructorImagenFinal();
+    constructorImagenFinal();
 
 });
 
 btnShiny.addEventListener("click", () => {
-  isShiny = isShiny ? false : true;
-  btnShiny.classList.toggle("yellow")
-  btnShiny.querySelector(".middle-circle").classList.toggle("yellow");
-  btnShiny.querySelector(".middle-circle").classList.toggle("transparent");
-  btnShiny.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("yellow")
-  btnShiny.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
+    isShiny = isShiny ? false : true;
+    btnShiny.classList.toggle("yellow")
+    btnShiny.querySelector(".middle-circle").classList.toggle("yellow");
+    btnShiny.querySelector(".middle-circle").classList.toggle("transparent");
+    btnShiny.querySelector(".middle-circle").querySelector(".inner-circle").classList.toggle("yellow")
+    btnShiny.querySelector(".middle-circle").querySelector(".inner-circle").querySelector(".svg-icon").classList.toggle("white")
 
-  constructorImagenFinal();
+    constructorImagenFinal();
 })
 
 
-function constructorImagenFinal(){
-  imagenFinal = "public/" + pokemon
-  imagenFinal += isMacho ? "_macho" : (isHembra ? "_hembra" : "")
-  imagenFinal += isSeccion1 == "Común" ? "" : ("_" + isSeccion1)
-  imagenFinal += (isSeccion2 == "Común" || isSeccion2 == null) ? "" : ("_" + isSeccion2)
-  imagenFinal += isShiny ? "_variocolor" : ""
-  imagenFinal += "_HOME.png"
+function constructorImagenFinal() {
 
-  console.log(imagenFinal)
-  imagenPokemonCuadro.src = imagenFinal
+    isSeccion1 = isSeccion1 == "normal" ? "Común" : isSeccion1;
+    imagenFinal = "public/" + pokemon
+    imagenFinal += isMacho ? "_macho" : (isHembra ? "_hembra" : "")
+    imagenFinal += isSeccion1 == "Común" ? "" : ("_" + isSeccion1)
+    imagenFinal += (isSeccion2 == "Común" || isSeccion2 == null) ? "" : ("_" + isSeccion2)
+    imagenFinal += isShiny ? "_variocolor" : ""
+    imagenFinal += "_HOME.png"
+
+    console.log(imagenFinal)
+    imagenPokemonCuadro.src = imagenFinal
+    imagenPokemonCuadro.onerror
 }
 
 
 btnSec1Mas.addEventListener("click", () => {
-
-    
-    isSeccion1 = secciones[codSelector1(1)].tipo;
-    btnSec1Texto.textContent = isSeccion1;
-
-    /*if (secciones[selector1].opciones){
-        seccion2.style.display = "flex";
-        isSeccion2 = secciones[selector1].opciones[selector2];
-        // Da error
-        btnSec2Texto.textContent = isSeccion2;
-    }
-    else{
-        btnSec2Texto = "Común"
-        seccion2.style.display = "none";
-        
-    }*/
-  
-    constructorImagenFinal();
+    selector1 = (selector1 + 1) % secciones.length;
+    actualizarSecciones();
 });
 
-btnSec1Menos.addEventListener("click", () => {
-    isSeccion1 = secciones[codSelector1(-1)].tipo;
-    btnSec1Texto.textContent = isSeccion1;
 
-    /*if (secciones[selector1].opciones){
+btnSec1Menos.addEventListener("click", () => {
+    selector1 = (selector1 - 1 + secciones.length) % secciones.length;
+    actualizarSecciones();
+});
+
+function reorganizarInfo() {
+    isSeccion1 = "Común" ? "normal" : isSeccion1;
+
+    let datosPokemon;
+
+    if (typeof infoPokemon.normal[isSeccion1] === 'object') {
+        // Si isSeccion1 tiene subniveles, intentamos acceder a isSeccion2 dentro de isSeccion1
+        datosPokemon = infoPokemon.normal[isSeccion1][isSeccion2]
+            ? infoPokemon.normal[isSeccion1][isSeccion2]  // Si existe isSeccion2, usamos eso
+            : infoPokemon.normal[isSeccion1];  // Si no, usamos solo isSeccion1
+    } else {
+        // Verificamos si es la sección "normal" y si no hay otros tipos además de "normal"
+        if (isSeccion1 === "normal" && Object.keys(infoPokemon.normal).length === 1) {
+            // Si solo hay la sección "normal", no mostramos la barra de selección
+            datosPokemon = infoPokemon.normal[isSeccion1];
+            // Aquí puedes agregar lógica para ocultar la barra de selección
+            console.log("Solo 'normal' está disponible, ocultando barra.");
+        } else {
+            // Si hay más tipos disponibles o no es "normal", mostramos la barra
+            datosPokemon = infoPokemon.normal[isSeccion1];
+            // Aquí puedes agregar lógica para mostrar la barra de selección
+            console.log("Más tipos disponibles, mostrando barra.");
+        }
+    }
+
+    console.log(datosPokemon)
+    
+    /*if (datosPokemon.genero === undefined) {
+        btnMacho.style.display = "flex";
+        btnHembra.style.display = "flex";
+        if(btnHembra || btnMacho){
+            btnMacho = true
+        }
+    } else {
+        if (datosPokemon.genero === "m") {
+            btnMacho.style.display = "flex";
+            btnHembra.style.display = "none";
+            isMacho = true;
+            isHembra = false;
+        } else if (datosPokemon.genero === "h") {
+            btnMacho.style.display = "none";
+            btnHembra.style.display = "flex";
+            isMacho = false;
+            isHembra = true;
+        } else {
+            btnMacho.style.display = "none";
+            btnHembra.style.display = "none";
+            isMacho = false;
+            isHembra = false;
+        }
+    }*/
+    
+}
+
+function actualizarSecciones() {
+    isSeccion1 = secciones[selector1].tipo;
+    seccion1Texto.textContent = isSeccion1;
+
+    if (secciones[selector1].opciones) {
         seccion2.style.display = "flex";
         isSeccion2 = secciones[selector1].opciones[selector2];
-        // Da error
-        btnSec2Texto.textContent = isSeccion2;
-    }
-    else{
-        btnSec2Texto = "Común"
+        seccion2Texto.textContent = isSeccion2;
+
+    } else {
+        isSeccion2 = "Común";
         seccion2.style.display = "none";
-    }*/
+    }
 
+    reorganizarInfo();
     constructorImagenFinal();
-
-   
-})
-
-
-function codSelector1(tipo) {
-    let maxSelector = secciones.filter(item => typeof item === 'string' || (item && item.tipo)).length;
-    console.log(selector1)
-    selector1 = tipo == 1 ? (selector1 + 1) : (selector1 - 1)
-    selector1 = selector1 < 0 ? (maxSelector - 1) : selector1;
-    selector1 = selector1 > (maxSelector - 1) ? 0 : selector1;
-console.log(selector1)
-    return selector1
-  }
-
-  /*function codSelector2(tipo) {
-    let maxSelector = secciones.filter(item => typeof item === 'string' || (item && item.tipo)).length;
-    console.log(selector1)
-    selector2 = tipo == 1 ? (selector1 + 1) : (selector1 - 1)
-    selector2 = selector1 < 0 ? (maxSelector - 1) : selector1;
-    selector2 = selector1 > (maxSelector - 1) ? 0 : selector1;
-console.log(selector1)
-    return selector1
-  }*/
+}
